@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1acd6aea9d70c3042b664e839ac6b893, type: 3}
+  m_Name: BasicStats
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
+  pointsAmount: 50
+  health: 1
+  shield: 0
+  weaponRange: 8
+  weaponDamage: 1
+  weaponChargeTime: 2
+  moveSpeed: 8
+  turnSpeed: 5
+  sightRadius: 10
+  sightDistance: 40
+  attackDistance: 15
+  agroDistance: 10
+  agroTimeNeeded: 2
+  searchRange: 30
