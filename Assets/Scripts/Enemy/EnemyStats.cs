@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyStats", menuName = "Scriptable Objects/EnemyStats")]
 public class EnemyStats : ScriptableObject
 { 
-    public int pointsAmount;
+    
     
     //Health
     public int health;
@@ -25,7 +25,8 @@ public class EnemyStats : ScriptableObject
     public float agroDistance;
     public float searchRange;
     public float minDot;
+    public float moveToPlayerBias;
 
-
-
+    //misc
+    public int pointsAmount;
 }

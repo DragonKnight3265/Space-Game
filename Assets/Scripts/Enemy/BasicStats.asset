@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acd6aea9d70c3042b664e839ac6b893, type: 3}
   m_Name: BasicStats
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  pointsAmount: 50
   health: 1
   shield: 0
   weaponRange: 8
@@ -21,8 +20,10 @@ MonoBehaviour:
   moveSpeed: 8
   turnSpeed: 5
   sightRadius: 10
-  sightDistance: 40
+  sightDistance: 25
   attackDistance: 15
   agroDistance: 10
-  agroTimeNeeded: 2
-  searchRange: 30
+  searchRange: 25
+  minDot: 0.2
+  moveToPlayerBias: 0.6
+  pointsAmount: 50

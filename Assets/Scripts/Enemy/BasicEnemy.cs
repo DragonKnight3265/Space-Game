@@ -3,23 +3,8 @@ using Random = UnityEngine.Random;
 public class BasicEnemy : MonoBehaviour
 {
     [SerializeField] private EnemyStats stats;
-    [SerializeField] private float agroDistance;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float turnSpeed;
-    
-    [SerializeField] private float searchRange;
-    //Search for Player
-    [SerializeField] private float sightRadius;
-    [SerializeField] private float sightDistance;
-    
-    //How close until they start attacking
-    [SerializeField] private float attackDistance;
-    //How far away player can get before they get back moving to player
-    [SerializeField] private float maxAttackDistance;
-    [SerializeField] private float moveToPlayerBias;
     
     private Transform _target;
-    public int pointsAmount = 50;
     private Vector3 _movePoint;
     private bool _movePointSet;
     private bool _agroPlayer;
@@ -36,14 +21,12 @@ public class BasicEnemy : MonoBehaviour
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
     
-    
-    
     void PlayerInSight()
     {
         //Shoot a Sphere Cast out and if they see player than Turn _agroPlayer to True
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        if (Physics.SphereCast(ray, sightRadius, out hit, sightDistance))
+        if (Physics.SphereCast(ray, stats.sightRadius, out hit, stats.sightDistance))
         {
             if (hit.collider.CompareTag("Player"))
             {
@@ -59,26 +42,22 @@ public class BasicEnemy : MonoBehaviour
          
         
         
-        if (_agroPlayer == false  && distanceTarget.magnitude > agroDistance)
+        if (_agroPlayer == false  && distanceTarget.magnitude > stats.agroDistance)
         {
             PlayerInSight();
             Searching();
         }
-        else if (_agroPlayer == true  && distanceTarget.magnitude > attackDistance)
+        else if (_agroPlayer == true  && distanceTarget.magnitude > stats.attackDistance)
         {
             ChasePlayer();
         }
-        else if (_agroPlayer == true && distanceTarget.magnitude <= attackDistance)
+        else if (_agroPlayer == true && distanceTarget.magnitude <= stats.attackDistance)
         {
-            
+            ChasePlayer();
         }
-        
-        
-        
-        
     }
 
-    public void Searching()
+    private void Searching()
     {
         
         if (_movePointSet == false)
@@ -97,7 +76,7 @@ public class BasicEnemy : MonoBehaviour
             transform.rotation = Quaternion.Slerp(
                 transform.rotation,
                 lookRotation, 
-                turnSpeed * Time.deltaTime
+                stats.turnSpeed * Time.deltaTime
             );
 
             if (distance.magnitude < 2)
@@ -108,67 +87,62 @@ public class BasicEnemy : MonoBehaviour
     }
     
     
-    public void ChasePlayer()
+    private void ChasePlayer()
     {
         Vector3 direction = (_target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
             lookRotation,
-            turnSpeed * Time.deltaTime
+            stats.turnSpeed * Time.deltaTime
         );
-        transform.Translate(Vector3.forward * (moveSpeed * Time.deltaTime));
+        transform.Translate(Vector3.forward * (stats.moveSpeed * Time.deltaTime));
     }
 
 
     private void SearchPoint()
     {
-
-        if (Random.value < moveToPlayerBias)
+        
+        if (Random.value < stats.moveToPlayerBias)
         {
             Vector3 playerDirection = (_target.position - transform.position).normalized;
-            float distanceToPlayer = Random.Range(5f, searchRange);
-            
+            float distanceToPlayer = Random.Range(5f, stats.searchRange);
             _movePoint = transform.position + playerDirection * distanceToPlayer;
         }
         else
         {
-            Vector3 randomDirection;
-            do
-            {
-                randomDirection = new Vector3(
-                                Random.Range(-1f, 1f),
-                                0,
-                                Random.Range(-1f, 1f)
-                                ).normalized;
-                            
-                            
-            } while (Vector3.Dot(transform.forward, randomDirection) < stats.minDot);
-            float distance = Random.Range(5f, searchRange);
-            _movePoint = transform.position + randomDirection * distance;
-            
+             float randomX = Random.Range(-stats.searchRange, stats.searchRange); 
+             float randomZ = Random.Range(-stats.searchRange, stats.searchRange);
+             _movePoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
         }
         _movePointSet = true;
-        
     }
 
     private void SearchPoint2()
     {
-        float randomX = Random.Range(-searchRange, searchRange); 
-        float randomZ = Random.Range(-searchRange, searchRange);
-        _movePoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        Vector3 randomDirection;
+                 do
+                 {
+                     randomDirection = new Vector3(
+                                     Random.Range(-1f, 1f),
+                                     0,
+                                     Random.Range(-1f, 1f)
+                                     ).normalized;
+                                 
+                                 
+                 } while (Vector3.Dot(transform.forward, randomDirection) < stats.minDot);
+                 float distance = Random.Range(5f, stats.searchRange);
+                 _movePoint = transform.position + randomDirection * distance;
+       
     }
     
     
     public void OnDestroy()
     {
         if (ScoreCount.Instance != null) {
-            ScoreCount.Instance.AddScore(pointsAmount);
+            ScoreCount.Instance.AddScore(stats.pointsAmount);
         }
         Debug.Log("Add Points");
     }
-    
-    
-    
     
 }
