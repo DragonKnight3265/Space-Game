@@ -10,6 +10,7 @@ public class ShipStats : ScriptableObject
     public float playerSpeed;
     
     
+    
     [Header("Ship Weapons")]
     public float lazerFireRate;
     public float lazerRange;
@@ -19,6 +20,8 @@ public class ShipStats : ScriptableObject
     public float missileTurnSpeed;
     public float lockTime;
     public float lockTimeNeeded;
+    
+    
     
     [Header("Ship Health")]
     public int maxHealth;

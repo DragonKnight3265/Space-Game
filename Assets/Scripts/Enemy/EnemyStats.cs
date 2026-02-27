@@ -13,7 +13,7 @@ public class EnemyStats : ScriptableObject
     public float weaponRange;
     public float weaponDamage;
     public float weaponChargeTime;
-    
+    public float weaponChargeNeeded;
      //Movement
     public float moveSpeed;
     public float turnSpeed;
@@ -21,7 +21,10 @@ public class EnemyStats : ScriptableObject
     //Search for Player
     public float sightRadius;
     public float sightDistance;
+    //start attacking
     public float attackDistance;
+    //Until they can't attack
+    public float maxFireDistance;
     public float agroDistance;
     public float searchRange;
     public float minDot;

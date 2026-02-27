@@ -7,12 +7,15 @@ public class Player : MonoBehaviour
     private InputManager _input;
     private CharacterController _controller;
     private float _moveSpeed = 10;
+    public int Health;
+    public int Shield;
     void Start()
     {
         _input = InputManager.Instance;
         _controller = GetComponent<CharacterController>();
+        Health = _ship.currentHealth = 3;
+        Shield = _ship.currentShield = 2;
     }
-    
     void Update()
     {
         HandleMovement(Time.deltaTime);

@@ -17,11 +17,13 @@ MonoBehaviour:
   weaponRange: 8
   weaponDamage: 1
   weaponChargeTime: 2
+  weaponChargeNeeded: 0
   moveSpeed: 8
   turnSpeed: 5
   sightRadius: 10
   sightDistance: 25
   attackDistance: 15
+  maxFireDistance: 30
   agroDistance: 10
   searchRange: 25
   minDot: 0.2

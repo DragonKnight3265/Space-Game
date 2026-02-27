@@ -3,16 +3,16 @@ using Random = UnityEngine.Random;
 public class BasicEnemy : MonoBehaviour
 {
     [SerializeField] private EnemyStats stats;
-    
+    [SerializeField] private Transform firePosition;
     private Transform _target;
     private Vector3 _movePoint;
     private bool _movePointSet;
     private bool _agroPlayer;
     
+    
     private void Awake()
     {
         _target = GameObject.Find("Player").transform;
-        
     }
 
     void Start()
@@ -53,7 +53,16 @@ public class BasicEnemy : MonoBehaviour
         }
         else if (_agroPlayer == true && distanceTarget.magnitude <= stats.attackDistance)
         {
-            ChasePlayer();
+            if (distanceTarget.magnitude > stats.maxFireDistance)
+            {
+                ChasePlayer();
+            }
+            else
+            {
+                Weapon();
+            }
+            
+            
         }
     }
 
@@ -135,7 +144,22 @@ public class BasicEnemy : MonoBehaviour
                  _movePoint = transform.position + randomDirection * distance;
        
     }
-    
+
+    private void Weapon()
+    {
+         stats.weaponChargeTime += Time.deltaTime;
+         if (stats.weaponChargeTime >= stats.weaponChargeNeeded)
+         {
+             RaycastHit hit;
+             float maxDistance = stats.weaponRange;
+             Vector3 origin = firePosition.position;
+             Vector3 dir = firePosition.TransformDirection(Vector3.forward);
+             if (Physics.Raycast(origin, dir, out hit, maxDistance))
+             {
+                 
+             }
+         }
+    }
     
     public void OnDestroy()
     {

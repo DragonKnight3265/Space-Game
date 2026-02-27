@@ -5,7 +5,6 @@ public class Lazer : MonoBehaviour
 {
     [SerializeField]private ShipStats _stats;
     [SerializeField] private Camera shootPosition;
-    [SerializeField] private float lazerRange;
     [SerializeField] private Transform firePosition;
     private InputManager _input;
     void Start()
