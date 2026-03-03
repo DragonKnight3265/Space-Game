@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 1024501056470604930}
   - component: {fileID: 2529956358706781203}
   - component: {fileID: 6476447739195008021}
+  - component: {fileID: 4345585774241188700}
   m_Layer: 0
   m_Name: Basic Enemy
   m_TagString: LockableTarget
@@ -122,6 +123,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2514065118927102273}
   - {fileID: 7653688174831887495}
   - {fileID: 3548094335337600473}
   m_Father: {fileID: 0}
@@ -218,7 +220,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicEnemy
   stats: {fileID: 11400000, guid: a81c751f9691f464bbb398c48664ff59, type: 2}
-  firePosition: {fileID: 3548094335337600473}
+  firePosition: {fileID: 2514065118927102273}
+--- !u!114 &4345585774241188700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5618286806429136473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccdb81641fa53a842b0ee5ac0b1db3d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  stats: {fileID: 11400000, guid: a81c751f9691f464bbb398c48664ff59, type: 2}
+--- !u!1 &7030793728043136176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2514065118927102273}
+  m_Layer: 0
+  m_Name: FirePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2514065118927102273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7030793728043136176}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 701644849658710445}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7776477617021310066
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,8 +274,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3548094335337600473}
-  - component: {fileID: 6974585001672510260}
-  - component: {fileID: 8319397977209619083}
   m_Layer: 2
   m_Name: Enemy Weapon
   m_TagString: Untagged
@@ -254,40 +298,6 @@ Transform:
   - {fileID: 3329380788114478767}
   m_Father: {fileID: 701644849658710445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6974585001672510260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7776477617021310066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4512b5137dcd56d4e9031cac616dc369, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Lazer
-  _stats: {fileID: 11400000, guid: 19d3150356623ac45b74798883362abe, type: 2}
-  shootPosition: {fileID: 0}
-  firePosition: {fileID: 0}
---- !u!114 &8319397977209619083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7776477617021310066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 193e9d023a0a5cc47a20d1b70e70c546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MissileLocking
-  _stats: {fileID: 11400000, guid: 19d3150356623ac45b74798883362abe, type: 2}
-  lockRadius: 3
-  spawnLocation: {fileID: 0}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 3
-  missilePrefab: {fileID: 5253520370321628686, guid: 0ac6a8c3ccf3a8f40a71f2ab560abe45, type: 3}
 --- !u!1 &7922359413176616392
 GameObject:
   m_ObjectHideFlags: 0

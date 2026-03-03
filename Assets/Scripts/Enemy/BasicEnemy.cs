@@ -8,11 +8,14 @@ public class BasicEnemy : MonoBehaviour
     private Vector3 _movePoint;
     private bool _movePointSet;
     private bool _agroPlayer;
-    
+    private float _weaponCharge;
+    private float _weaponChargeNeeded;
     
     private void Awake()
     {
         _target = GameObject.Find("Player").transform;
+        _weaponCharge = stats.weaponCharge;
+        _weaponChargeNeeded = stats.weaponChargeNeeded;
     }
 
     void Start()
@@ -44,24 +47,19 @@ public class BasicEnemy : MonoBehaviour
         
         if (_agroPlayer == false  && distanceTarget.magnitude > stats.agroDistance)
         {
+            //look for Player
             PlayerInSight();
             Searching();
         }
         else if (_agroPlayer == true  && distanceTarget.magnitude > stats.attackDistance)
         {
+            //Follow Player
             ChasePlayer();
         }
         else if (_agroPlayer == true && distanceTarget.magnitude <= stats.attackDistance)
         {
-            if (distanceTarget.magnitude > stats.maxFireDistance)
-            {
-                ChasePlayer();
-            }
-            else
-            {
-                Weapon();
-            }
-            
+            //Attack
+            Weapon();
             
         }
     }
@@ -147,16 +145,21 @@ public class BasicEnemy : MonoBehaviour
 
     private void Weapon()
     {
-         stats.weaponChargeTime += Time.deltaTime;
-         if (stats.weaponChargeTime >= stats.weaponChargeNeeded)
+         _weaponCharge += Time.deltaTime;
+         if (_weaponCharge >= _weaponChargeNeeded)
          {
              RaycastHit hit;
-             float maxDistance = stats.weaponRange;
+             float maxDistance = stats.lazerRange;
              Vector3 origin = firePosition.position;
              Vector3 dir = firePosition.TransformDirection(Vector3.forward);
              if (Physics.Raycast(origin, dir, out hit, maxDistance))
              {
-                 
+                 IDamageable damageable = hit.collider.GetComponent<IDamageable>();
+                 if (damageable != null)
+                 {
+                     damageable.TakeDamage(stats.weaponDamage);
+                     Debug.Log("Player took Damage");
+                 }
              }
          }
     }

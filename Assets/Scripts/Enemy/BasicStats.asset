@@ -12,19 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acd6aea9d70c3042b664e839ac6b893, type: 3}
   m_Name: BasicStats
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  health: 1
-  shield: 0
-  weaponRange: 8
-  weaponDamage: 1
-  weaponChargeTime: 2
-  weaponChargeNeeded: 0
+  maxHealth: 1
+  maxShield: 1
+  currentHealth: 0
+  currentShield: 0
+  maxSpeed: 5
+  maxTurnSpeed: 3
+  maxAcceleration: 0
   moveSpeed: 8
   turnSpeed: 5
+  lazerRange: 30
+  weaponDamage: 1
+  weaponChargeNeeded: 2
+  weaponCharge: 0
   sightRadius: 10
   sightDistance: 25
-  attackDistance: 15
   maxFireDistance: 30
   agroDistance: 10
+  attackDistance: 15
   searchRange: 25
   minDot: 0.2
   moveToPlayerBias: 0.6
