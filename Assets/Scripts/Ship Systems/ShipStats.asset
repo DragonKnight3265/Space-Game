@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShipStats
   maxHealth: 3
   maxShield: 3
-  currentHealth: 0
-  currentShield: 0
+  currentHealth: 3
+  currentShield: 3
   maxSpeed: 10
   maxTurnSpeed: 5
   maxAcceleration: 10
   moveSpeed: 10
   turnSpeed: 10
   lazerRange: 50
-  weaponDamage: 0
+  weaponDamage: 1
   weaponChargeNeeded: 0.5
   weaponCharge: 0
   maxMissiles: 7

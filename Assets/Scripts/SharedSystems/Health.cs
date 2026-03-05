@@ -1,12 +1,12 @@
 using System;
-using UnityEngine.SceneManagement;
 using UnityEngine;
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] CharacterStats stats;
     
     int _currentHealth;
     int _currentShield;
+    public SceneChanger sceneChanger;
     
     private void Awake()
     {
@@ -19,14 +19,29 @@ public class Health : MonoBehaviour
         if (_currentShield > 0)
         {
             _currentShield -= damage;
+            if (_currentShield < 0)
+            {
+                _currentHealth += _currentShield;
+                _currentShield = 0;
+            }
+            Debug.Log(gameObject.name + "took " + damage + " shield damage");
         }
         else
         { 
             _currentHealth -= damage;
+            Debug.Log(gameObject.name + "took " + damage + " hull damage");
         }
+        
         if (_currentHealth <= 0)
         {
-            Destroy(this.gameObject);
+            if (CompareTag("Player") == true)
+            {
+                sceneChanger.Defeated=true;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

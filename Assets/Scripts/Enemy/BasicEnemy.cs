@@ -169,7 +169,6 @@ public class BasicEnemy : MonoBehaviour
         if (ScoreCount.Instance != null) {
             ScoreCount.Instance.AddScore(stats.pointsAmount);
         }
-        Debug.Log("Add Points");
     }
     
 }
