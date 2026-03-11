@@ -10,9 +10,13 @@ public class Lazer : MonoBehaviour
     private InputManager _input;
     private int damage;
 
+    private float _weaponCharge;
+    private float _weaponChargeNeeded;
     private void Awake()
     {
         damage = stats.weaponDamage;
+        _weaponCharge = stats.weaponCharge;
+        _weaponChargeNeeded = stats.weaponChargeNeeded;
     }
 
     void Start()
@@ -23,7 +27,7 @@ public class Lazer : MonoBehaviour
     }
     void Update()
     {
-        
+        _weaponCharge += Time.deltaTime;
     }
 
     
@@ -39,14 +43,14 @@ public class Lazer : MonoBehaviour
         float maxDistance = stats.lazerRange;
         Vector3 origin = firePosition.position;
         Vector3 dir = firePosition.TransformDirection(Vector3.forward);
-        if (Physics.Raycast(origin, dir, out hit, maxDistance))
+        if(_weaponCharge>=_weaponChargeNeeded)
+        if (Physics.SphereCast(origin,.5f, dir, out hit, maxDistance))
         {
             IDamageable damageable = hit.collider.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.TakeDamage(stats.weaponDamage);
+                damageable.TakeDamage(damage);
             }
-            
         }
         
     }

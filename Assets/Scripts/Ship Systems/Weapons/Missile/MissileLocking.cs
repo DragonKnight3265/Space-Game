@@ -31,10 +31,11 @@ public class MissileLocking : MonoBehaviour
         
         
 
-        if (_lockComplete && _input.MissileLaunch)
+        if (_lockComplete && _input.MissileLaunch && _stats.maxMissiles>1)
         {
             FireMissile();
             ResetLock();
+            _stats.maxMissiles-=1;
         }
 
         if (!_input.MissileDown && !_lockComplete)

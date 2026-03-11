@@ -10,9 +10,11 @@ public class BasicEnemy : MonoBehaviour
     private bool _agroPlayer;
     private float _weaponCharge;
     private float _weaponChargeNeeded;
+    private int damage;
     
     private void Awake()
     {
+        damage = stats.weaponDamage;
         _target = GameObject.Find("Player").transform;
         _weaponCharge = stats.weaponCharge;
         _weaponChargeNeeded = stats.weaponChargeNeeded;
@@ -26,7 +28,6 @@ public class BasicEnemy : MonoBehaviour
     
     void PlayerInSight()
     {
-        //Shoot a Sphere Cast out and if they see player than Turn _agroPlayer to True
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         if (Physics.SphereCast(ray, stats.sightRadius, out hit, stats.sightDistance))
@@ -42,8 +43,6 @@ public class BasicEnemy : MonoBehaviour
     void Update()
     {
         Vector3 distanceTarget = _target.position - transform.position;
-         
-        
         
         if (_agroPlayer == false  && distanceTarget.magnitude > stats.agroDistance)
         {
@@ -60,13 +59,11 @@ public class BasicEnemy : MonoBehaviour
         {
             //Attack
             Weapon();
-            
         }
     }
 
     private void Searching()
     {
-        
         if (_movePointSet == false)
         {
             SearchPoint();
@@ -85,14 +82,12 @@ public class BasicEnemy : MonoBehaviour
                 lookRotation, 
                 stats.turnSpeed * Time.deltaTime
             );
-
             if (distance.magnitude < 2)
             {
                 _movePointSet = false;
             }
         }
     }
-    
     
     private void ChasePlayer()
     {
@@ -105,8 +100,7 @@ public class BasicEnemy : MonoBehaviour
         );
         transform.Translate(Vector3.forward * (stats.moveSpeed * Time.deltaTime));
     }
-
-
+    
     private void SearchPoint()
     {
         
@@ -146,21 +140,22 @@ public class BasicEnemy : MonoBehaviour
     private void Weapon()
     {
          _weaponCharge += Time.deltaTime;
+         RaycastHit hit;
+         float maxDistance = stats.lazerRange;
+         Vector3 origin = firePosition.position;
+         Vector3 dir = firePosition.TransformDirection(Vector3.forward);
          if (_weaponCharge >= _weaponChargeNeeded)
          {
-             RaycastHit hit;
-             float maxDistance = stats.lazerRange;
-             Vector3 origin = firePosition.position;
-             Vector3 dir = firePosition.TransformDirection(Vector3.forward);
-             if (Physics.Raycast(origin, dir, out hit, maxDistance))
+             if (Physics.SphereCast(origin,.5f, dir, out hit, maxDistance))
              {
                  IDamageable damageable = hit.collider.GetComponent<IDamageable>();
                  if (damageable != null)
                  {
-                     damageable.TakeDamage(stats.weaponDamage);
+                     damageable.TakeDamage(damage);
                      Debug.Log("Player took Damage");
                  }
              }
+             _weaponCharge = 0;
          }
     }
     
@@ -170,5 +165,4 @@ public class BasicEnemy : MonoBehaviour
             ScoreCount.Instance.AddScore(stats.pointsAmount);
         }
     }
-    
 }

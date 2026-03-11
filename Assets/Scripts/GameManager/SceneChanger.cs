@@ -1,29 +1,29 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public bool Defeated = false;
-    public bool Victorious = false;
+    
+    public bool defeated = false;
+    public bool victorious = false;
     
     public int sceneBuildIndexStart;
-    public int sceneBuildIndexVictorious;
     public int sceneBuildIndexDefeat;
-    
+    public int sceneBuildIndexVictorious;
     
     void Start()
     {
         
     }
-
     
     void Update()
     {
-        if (Defeated == true)
+        if (defeated == true)
         {
             SceneManager.LoadScene(sceneBuildIndexDefeat);
         }
-        else if (Victorious == true)
+        else if (victorious == true)
         {
             
         }

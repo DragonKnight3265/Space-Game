@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
   maxHealth: 2
   maxShield: 1
-  currentHealth: 0
-  currentShield: 0
   maxSpeed: 5
   maxTurnSpeed: 3
   maxAcceleration: 0
@@ -31,6 +29,6 @@ MonoBehaviour:
   agroDistance: 10
   attackDistance: 15
   searchRange: 25
-  minDot: 0.2
-  moveToPlayerBias: 0.6
+  minDot: 0.3
+  moveToPlayerBias: 0.5
   pointsAmount: 50

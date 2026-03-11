@@ -36,7 +36,7 @@ public class Health : MonoBehaviour, IDamageable
         {
             if (CompareTag("Player") == true)
             {
-                sceneChanger.Defeated=true;
+                sceneChanger.defeated=true;
             }
             else
             {
