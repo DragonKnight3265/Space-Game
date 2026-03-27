@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1acd6aea9d70c3042b664e839ac6b893, type: 3}
-  m_Name: BasicStats
+  m_Name: MediumEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  maxHealth: 2
-  maxShield: 1
-  maxSpeed: 5
-  maxTurnSpeed: 3
+  maxHealth: 3
+  maxShield: 2
+  maxSpeed: 8
+  maxTurnSpeed: 5
   maxAcceleration: 0
   moveSpeed: 8
   turnSpeed: 5
-  lazerRange: 30
+  lazerRange: 35
   weaponDamage: 1
-  weaponChargeNeeded: 2
+  weaponChargeNeeded: 1.5
   weaponCharge: 0
-  sightRadius: 10
-  sightDistance: 25
-  maxFireDistance: 30
-  agroDistance: 10
-  attackDistance: 15
+  sightRadius: 15
+  sightDistance: 30
+  maxFireDistance: 35
+  agroDistance: 15
+  attackDistance: 20
   searchRange: 25
   minDot: 0.3
-  moveToPlayerBias: 0.5
-  pointsAmount: 50
+  moveToPlayerBias: 0.6
+  pointsAmount: 100

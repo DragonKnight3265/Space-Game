@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 6476447739195008021}
   - component: {fileID: 4345585774241188700}
   m_Layer: 0
-  m_Name: Basic Enemy
+  m_Name: Easy Enemy
   m_TagString: LockableTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   stats: {fileID: 11400000, guid: a81c751f9691f464bbb398c48664ff59, type: 2}
+  sceneChanger: {fileID: 0}
 --- !u!1 &7030793728043136176
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +454,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d9b78256cf4403b42ba51fcfb23b5745, type: 2}
+  - {fileID: 2100000, guid: f5e968d5be5e973449ad8be896bba544, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

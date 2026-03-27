@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        if (LevelManager.instance.movingLevels)
+            return;
+        
         HandleMovement(Time.deltaTime);
     }
     

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1acd6aea9d70c3042b664e839ac6b893, type: 3}
+  m_Name: EasyEnemy
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
+  maxHealth: 2
+  maxShield: 1
+  maxSpeed: 5
+  maxTurnSpeed: 3
+  maxAcceleration: 0
+  moveSpeed: 5
+  turnSpeed: 3
+  lazerRange: 30
+  weaponDamage: 1
+  weaponChargeNeeded: 2
+  weaponCharge: 0
+  sightRadius: 10
+  sightDistance: 25
+  maxFireDistance: 30
+  agroDistance: 10
+  attackDistance: 15
+  searchRange: 25
+  minDot: 0.3
+  moveToPlayerBias: 0.5
+  pointsAmount: 50

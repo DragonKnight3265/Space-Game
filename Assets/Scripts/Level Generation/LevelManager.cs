@@ -1,16 +1,113 @@
+using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Transition transition;
+    
+    public bool movingLevels = false;
+    
+    public static LevelManager instance;
+    public int currentLevel = 1;
+    [SerializeField] public int enemiesPerLevel = 3;
+    [SerializeField] public float spawnRadius = 60f;
+    [SerializeField] public float minDistanceFromPlayer = 35f;
+    
+    public GameObject player;
+    [Header("Enemey types")]
+    [SerializeField] public GameObject easyEnemiesPrefab;
+    [SerializeField] public GameObject mediumEnemiesPrefab;
+    [SerializeField] public GameObject hardEnemiesPrefab;
+
+    [Header("Enemy Scaling")] 
+    [SerializeField] public float strongEnemyChance = 0f;
+    [SerializeField] public float chanceIncrease = .05f;
+    [SerializeField] public int levelsPerIncrease = 3;
+    [SerializeField] public float maxStrongEnemyChance = .75f;
+    
+    public int enemiesAlive = 0;
+    
+    
+    public void Awake()
     {
-        
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    void Start()
     {
+        StartLevel();
         
     }
+    
+    void StartLevel()
+    {
+        
+        strongEnemyChance = Mathf.Min(
+            (currentLevel/levelsPerIncrease) * chanceIncrease, 
+            maxStrongEnemyChance
+            );
+        int enemyCount = enemiesPerLevel + (currentLevel/3)*2;
+        
+        for (int i = 0; i < enemiesPerLevel; i++)
+        {
+            SpawnEnemies();
+        }
+        enemiesAlive = enemyCount;
+    }
+
+    void SpawnEnemies()
+    {
+        Vector3 spawnPos = GetValidSpawnPostion();
+        
+        GameObject enemyToSpawn;
+        
+        if (Random.value < strongEnemyChance)
+        {
+            enemyToSpawn = mediumEnemiesPrefab;
+        }
+        else
+        {
+            enemyToSpawn = easyEnemiesPrefab;
+        }
+        Instantiate(enemyToSpawn, spawnPos, Quaternion.identity);
+    }
+
+    Vector3 GetValidSpawnPostion()
+    {
+        Vector3 pos;
+        do
+        {
+            Vector2 randomCircle = Random.insideUnitCircle * spawnRadius;
+            pos = new Vector3(randomCircle.x, 0, randomCircle.y) + player.transform.position;
+            
+        } while (Vector3.Distance(pos, player.transform.position) < minDistanceFromPlayer);
+        return pos;
+    }
+
+    public void EnemyKilled()
+    {
+        enemiesAlive--;
+        if (enemiesAlive <= 0)
+        {
+            StartCoroutine(NextLevel());
+        }
+    }
+
+    IEnumerator NextLevel()
+    {
+        movingLevels = true;
+        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(transition.FadeOut());
+        currentLevel++;
+        StartLevel();
+        yield return StartCoroutine(transition.FadeIn());
+        yield return new WaitForSeconds(1f);
+        movingLevels = false;
+    }
+    
+    
 }
