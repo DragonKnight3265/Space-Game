@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,11 +12,17 @@ public class Missile : MonoBehaviour
     [SerializeField] private float hitDistance;
     [SerializeField] private ShipStats stats;
     [SerializeField] private Transform firePosition;
+    private int damage;
     void Start()
     {
         _input = InputManager.Instance;
     }
-    
+
+    private void Awake()
+    {
+        damage = stats.missileDamage;
+    }
+
     void Update()
     {
         
@@ -68,7 +75,11 @@ public class Missile : MonoBehaviour
         if (collision.collider.name.Equals(_target.name))
         {
             Debug.Log("Target hit!");
-            Destroy(collision.gameObject);
+            IDamageable damageable = gameObject.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(damage);
+            }
             Destroy(gameObject);
             
         }

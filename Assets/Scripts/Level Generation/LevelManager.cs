@@ -40,23 +40,22 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         StartLevel();
-        
     }
     
     void StartLevel()
     {
-        
         strongEnemyChance = Mathf.Min(
             (currentLevel/levelsPerIncrease) * chanceIncrease, 
             maxStrongEnemyChance
             );
         int enemyCount = enemiesPerLevel + (currentLevel/3)*2;
-        
-        for (int i = 0; i < enemiesPerLevel; i++)
+        enemiesAlive = enemyCount;
+        for (int i = 0; i < enemyCount; i++)
         {
             SpawnEnemies();
         }
-        enemiesAlive = enemyCount;
+        StartCoroutine(transition.FadeOut());
+        
     }
 
     void SpawnEnemies()
@@ -101,10 +100,10 @@ public class LevelManager : MonoBehaviour
     {
         movingLevels = true;
         yield return new WaitForSeconds(1f);
-        yield return StartCoroutine(transition.FadeOut());
+        yield return StartCoroutine(transition.FadeIn());
         currentLevel++;
         StartLevel();
-        yield return StartCoroutine(transition.FadeIn());
+        yield return StartCoroutine(transition.FadeOut());
         yield return new WaitForSeconds(1f);
         movingLevels = false;
     }

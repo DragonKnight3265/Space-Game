@@ -4,6 +4,7 @@ using UnityEngine;
 public class ScoreCount : MonoBehaviour
 {
     [SerializeField] public TMP_Text scoreText;
+    [SerializeField] public TMP_Text levelText;
     public static ScoreCount Instance;
     private int score;
 
@@ -31,6 +32,10 @@ public void AddScore(int points)
         UpdateScoreText();
     }
 
+    public void UpdateLevelText()
+    {
+        levelText.text = "Level:" + LevelManager.instance.currentLevel;
+    }
 
     void UpdateScoreText()
     {
@@ -39,6 +44,7 @@ public void AddScore(int points)
     void Update()
     {
         UpdateScoreText();
+        UpdateLevelText();
     }
     
     

@@ -11,4 +11,5 @@ public class ShipStats : CharacterStats
     public float missileTurnSpeed;
     public float lockTime;
     public float lockTimeNeeded;
+    public int missileDamage;
 }

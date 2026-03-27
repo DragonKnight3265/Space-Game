@@ -15,9 +15,10 @@ public class Transition : MonoBehaviour
             while (t < 1)
             {
                 t += Time.deltaTime * fadeSpeed;
-                fadeImage.color = new Color(0, 0, 0, t);
+                fadeImage.color = new Color(0, 0, 0,0);
                 yield return null;
             }
+            Debug.Log("Fade out");
         }
 
         public IEnumerator FadeIn()
@@ -27,9 +28,10 @@ public class Transition : MonoBehaviour
             while (t > 0)
             {
                 t -= Time.deltaTime * fadeSpeed;
-                fadeImage.color = new Color(0, 0, 0, t);
+                fadeImage.color = new Color(0, 0, 0, 100);
                 yield return null;
             }
-    }
+            Debug.Log("Fade in");
+        }
 
 }

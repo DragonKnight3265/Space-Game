@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShipStats
   maxHealth: 3
   maxShield: 3
-  currentHealth: 3
-  currentShield: 3
   maxSpeed: 10
   maxTurnSpeed: 5
   maxAcceleration: 10
@@ -31,3 +29,4 @@ MonoBehaviour:
   missileTurnSpeed: 2
   lockTime: 0
   lockTimeNeeded: 1
+  missileDamage: 4
