@@ -23,12 +23,12 @@ MonoBehaviour:
   weaponDamage: 1
   weaponChargeNeeded: 1.5
   weaponCharge: 0
-  sightRadius: 15
-  sightDistance: 30
+  sightRadius: 20
+  sightDistance: 45
   maxFireDistance: 35
   agroDistance: 15
   attackDistance: 20
-  searchRange: 25
+  searchRange: 35
   minDot: 0.3
-  moveToPlayerBias: 0.6
-  pointsAmount: 100
+  moveToPlayerBias: 0.7
+  pointsAmount: 150

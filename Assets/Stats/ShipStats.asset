@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5022b1262ec66004db041dc3f673f916, type: 3}
   m_Name: ShipStats
   m_EditorClassIdentifier: Assembly-CSharp::ShipStats
-  maxHealth: 3
-  maxShield: 3
+  maxHealth: 4
+  maxShield: 4
   maxSpeed: 10
   maxTurnSpeed: 5
   maxAcceleration: 10
   moveSpeed: 10
   turnSpeed: 10
-  lazerRange: 50
+  lazerRange: 55
   weaponDamage: 1
-  weaponChargeNeeded: 0.5
+  weaponChargeNeeded: 1.2
   weaponCharge: 0
   maxMissiles: 7
   missileRange: 80

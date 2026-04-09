@@ -148,7 +148,7 @@ public class BasicEnemy : MonoBehaviour
          Vector3 dir = firePosition.TransformDirection(Vector3.forward);
          if (_weaponCharge >= _weaponChargeNeeded)
          {
-             if (Physics.SphereCast(origin,.5f, dir, out hit, maxDistance))
+             if (Physics.SphereCast(origin,.3f, dir, out hit, maxDistance))
              {
                  IDamageable damageable = hit.collider.GetComponent<IDamageable>();
                  if (damageable != null)
@@ -160,7 +160,6 @@ public class BasicEnemy : MonoBehaviour
              _weaponCharge = 0;
          }
     }
-    
     public void OnDestroy()
     {
         LevelManager.instance.EnemyKilled();

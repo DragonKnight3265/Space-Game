@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1acd6aea9d70c3042b664e839ac6b893, type: 3}
-  m_Name: EasyEnemy
+  m_Name: TestDummy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  maxHealth: 2
-  maxShield: 1
-  maxSpeed: 5
-  maxTurnSpeed: 3
+  maxHealth: 99
+  maxShield: 99
+  maxSpeed: 0
+  maxTurnSpeed: 0
   maxAcceleration: 0
-  moveSpeed: 5
-  turnSpeed: 3
-  lazerRange: 30
-  weaponDamage: 1
-  weaponChargeNeeded: 2
+  moveSpeed: 0
+  turnSpeed: 0
+  lazerRange: 0
+  weaponDamage: 0
+  weaponChargeNeeded: 0
   weaponCharge: 0
-  sightRadius: 10
-  sightDistance: 25
-  maxFireDistance: 30
-  agroDistance: 10
-  attackDistance: 15
-  searchRange: 25
-  minDot: 0.3
-  moveToPlayerBias: 0.5
-  pointsAmount: 100
+  sightRadius: 0
+  sightDistance: 0
+  maxFireDistance: 0
+  agroDistance: 0
+  attackDistance: 0
+  searchRange: 0
+  minDot: 0
+  moveToPlayerBias: 0
+  pointsAmount: 0
