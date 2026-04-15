@@ -6,7 +6,12 @@ public class Health : MonoBehaviour, IDamageable
     
     int _currentHealth;
     int _currentShield;
-    public SceneChanger sceneChanger;
+    private SceneChanger sceneChanger;
+
+    void Start()
+    {
+        sceneChanger = FindObjectOfType<SceneChanger>();
+    }
     
     private void Awake()
     {

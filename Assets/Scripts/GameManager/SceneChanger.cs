@@ -4,13 +4,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    
+    public SceneChanger Instance;
     public bool defeated = false;
     public bool victorious = false;
     
     public int sceneBuildIndexStart;
     public int sceneBuildIndexDefeat;
     public int sceneBuildIndexVictorious;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     
     void Start()
     {

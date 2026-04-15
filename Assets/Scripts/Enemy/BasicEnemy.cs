@@ -12,6 +12,7 @@ public class BasicEnemy : MonoBehaviour
     private float _weaponChargeNeeded;
     private int damage;
     
+    
     private void Awake()
     {
         damage = stats.weaponDamage;

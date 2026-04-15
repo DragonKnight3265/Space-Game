@@ -23,10 +23,10 @@ MonoBehaviour:
   weaponDamage: 1
   weaponChargeNeeded: 1.2
   weaponCharge: 0
-  maxMissiles: 7
+  maxMissiles: 5
   missileRange: 80
   missileSpeed: 15
   missileTurnSpeed: 2
-  lockTime: 0
+  lockTime: 1
   lockTimeNeeded: 1
   missileDamage: 4
