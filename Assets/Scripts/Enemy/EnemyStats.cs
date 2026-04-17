@@ -7,6 +7,7 @@ public class EnemyStats : CharacterStats
     public float sightRadius;
     public float sightDistance;
     [Header("Attack Distance")]
+    //Max Fire not used
     public float maxFireDistance;
     public float agroDistance;
     public float attackDistance;

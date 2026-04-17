@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1246648889203690571}
   - component: {fileID: 145699548914598879}
   - component: {fileID: 7849993886852508964}
+  - component: {fileID: 5844142055762677853}
   m_Layer: 0
   m_Name: Medium Enemy
   m_TagString: LockableTarget
@@ -121,6 +122,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   stats: {fileID: 11400000, guid: e659e673b2048dd4ba6f95e17027b123, type: 2}
+--- !u!135 &5844142055762677853
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246648889205691019}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 8.318996
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3100640244542157774
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,18 +17,18 @@ MonoBehaviour:
   maxSpeed: 8
   maxTurnSpeed: 5
   maxAcceleration: 0
-  moveSpeed: 8
+  moveSpeed: 10
   turnSpeed: 5
-  lazerRange: 35
+  lazerRange: 70
   weaponDamage: 1
   weaponChargeNeeded: 1.5
   weaponCharge: 0
-  sightRadius: 20
+  sightRadius: 10
   sightDistance: 45
-  maxFireDistance: 35
+  maxFireDistance: 50
   agroDistance: 15
-  attackDistance: 20
-  searchRange: 35
+  attackDistance: 35
+  searchRange: 50
   minDot: 0.3
   moveToPlayerBias: 0.7
   pointsAmount: 150

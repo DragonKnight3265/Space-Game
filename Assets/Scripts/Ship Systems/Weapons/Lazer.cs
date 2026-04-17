@@ -36,15 +36,15 @@ public class Lazer : MonoBehaviour
         float maxDistance = stats.lazerRange;
         Vector3 origin = firePosition.position;
         Vector3 dir = firePosition.TransformDirection(Vector3.forward);
-        if(_weaponCharge>=_weaponChargeNeeded) 
-            if (Physics.SphereCast(origin,.5f, dir, out hit, maxDistance))
-        {
-            IDamageable damageable = hit.collider.GetComponent<IDamageable>();
-            if (damageable != null)
+            if (Physics.SphereCast(origin, .5f, dir, out hit, maxDistance))
             {
-                damageable.TakeDamage(damage);
+                IDamageable damageable = hit.collider.GetComponent<IDamageable>();
+                if (damageable != null)
+                {
+                    damageable.TakeDamage(damage);
+                }
+                _weaponCharge = 0;
             }
-            _weaponCharge = 0;
-        }
+        
     }
 }

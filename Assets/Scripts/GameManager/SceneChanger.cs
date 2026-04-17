@@ -8,8 +8,8 @@ public class SceneChanger : MonoBehaviour
     public bool defeated = false;
     public bool victorious = false;
     
-    public int sceneBuildIndexStart;
-    public int sceneBuildIndexDefeat;
+    public int sceneBuildIndexStart = 0;
+    public int sceneBuildIndexDefeat = 2;
     public int sceneBuildIndexVictorious;
 
     private void Awake()
