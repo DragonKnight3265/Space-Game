@@ -3,19 +3,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    
     [SerializeField] ShipStats _ship;
     private InputManager _input;
     private CharacterController _controller;
+    private SceneChanger sceneChanger;
+    
     void Start()
     {
         _input = InputManager.Instance;
         _controller = GetComponent<CharacterController>();
+        sceneChanger = FindObjectOfType<SceneChanger>();
     }
     void Update()
     {
         if (LevelManager.instance.movingLevels)
             return;
-        
         HandleMovement(Time.deltaTime);
     }
     
@@ -34,10 +37,10 @@ public class Player : MonoBehaviour
         {
             
         }
-        
-        
     }
-    
-    
+    private void OnDestroy()
+    {
+        sceneChanger.defeated = true;
+    }
     
 }

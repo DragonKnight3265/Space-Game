@@ -151,6 +151,7 @@ public class BasicEnemy : MonoBehaviour
          {
              if (Physics.SphereCast(origin,.3f, dir, out hit, maxDistance))
              {
+                 Debug.Log("Lazer Fired");
                  IDamageable damageable = hit.collider.GetComponent<IDamageable>();
                  if (damageable != null)
                  {

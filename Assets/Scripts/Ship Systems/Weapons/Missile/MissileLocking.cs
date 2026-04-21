@@ -14,11 +14,12 @@ public class MissileLocking : MonoBehaviour
     public GameObject missilePrefab;
     private Transform currentTarget;
     private bool _lockComplete;
-    
+    private int missileCounter;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _input = InputManager.Instance;
+        missileCounter=_stats.maxMissiles;
     }
 
     // Update is called once per frame
@@ -26,16 +27,24 @@ public class MissileLocking : MonoBehaviour
     {
         if (_input.MissileDown && !_lockComplete)
         {
-            AttemptLockTarget();
+            if (missileCounter > 0)
+            {
+                AttemptLockTarget();
+            }
+            else
+            {
+                Debug.Log("No Missiles Left");
+            }
+            
         }
         
         
 
-        if (_lockComplete && _input.MissileLaunch && _stats.maxMissiles>1)
+        if (_lockComplete && _input.MissileLaunch)
         {
             FireMissile();
             ResetLock();
-            _stats.maxMissiles-=1;
+            missileCounter-=1;
         }
 
         if (!_input.MissileDown && !_lockComplete)

@@ -12,6 +12,7 @@ public class SceneChanger : MonoBehaviour
     public int sceneBuildIndexDefeat = 2;
     public int sceneBuildIndexVictorious;
 
+    
     private void Awake()
     {
         if (Instance == null)
@@ -32,6 +33,8 @@ public class SceneChanger : MonoBehaviour
     
     void Update()
     {
+        
+        
         if (defeated == true)
         {
             SceneManager.LoadScene(sceneBuildIndexDefeat);

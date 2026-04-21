@@ -24,9 +24,11 @@ public class LevelManager : MonoBehaviour
 
     [Header("Enemy Scaling")] 
     [SerializeField] public float strongEnemyChance = 0f;
+    [SerializeField] public float hardEnemyChance = 0f;
     [SerializeField] public float chanceIncrease = .05f;
     [SerializeField] public int levelsPerIncrease = 3;
     [SerializeField] public float maxStrongEnemyChance = .75f;
+    [SerializeField] public float maxHardEnemyChance = .40f;
     
     public int enemiesAlive = 0;
     
@@ -48,7 +50,7 @@ public class LevelManager : MonoBehaviour
             (currentLevel/levelsPerIncrease) * chanceIncrease, 
             maxStrongEnemyChance
             );
-        int enemyCount = enemiesPerLevel + (currentLevel/3)*2;
+        int enemyCount = enemiesPerLevel + (currentLevel/4)*2;
         enemiesAlive = enemyCount;
         for (int i = 0; i < enemyCount; i++)
         {

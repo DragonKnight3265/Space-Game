@@ -24,12 +24,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6263975169787635}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.77, y: 0, z: 2.75}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.04, y: 0.5, z: 7.01}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6890440674422759060}
+  m_Father: {fileID: 6953670283539000693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2882863334747428252
 GameObject:
@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 2882863334747428252}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 3.6, z: 0}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 22, y: 22, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -210,7 +210,7 @@ Transform:
   m_GameObject: {fileID: 5693953782367993025}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 20.6, z: 4.8}
+  m_LocalPosition: {x: 0, y: 62.8, z: 4.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -505,7 +505,6 @@ Transform:
   m_Children:
   - {fileID: 2911162410839388313}
   - {fileID: 7302717321613515644}
-  - {fileID: 8659197639757714525}
   m_Father: {fileID: 6463754762715823605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2355469116937556485
@@ -614,6 +613,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 400000, guid: 56e95c9f463de394d85a3e2b82792d3a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5987426894765194742}
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: 56e95c9f463de394d85a3e2b82792d3a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8659197639757714525}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 56e95c9f463de394d85a3e2b82792d3a, type: 3}
       insertIndex: -1

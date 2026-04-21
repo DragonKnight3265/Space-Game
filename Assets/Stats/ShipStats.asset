@@ -19,14 +19,14 @@ MonoBehaviour:
   maxAcceleration: 10
   moveSpeed: 10
   turnSpeed: 10
-  lazerRange: 55
+  lazerRange: 80
   weaponDamage: 1
   weaponChargeNeeded: 1.2
   weaponCharge: 0
-  maxMissiles: 5
+  maxMissiles: 3
   missileRange: 80
   missileSpeed: 15
-  missileTurnSpeed: 2
+  missileTurnSpeed: 5
   lockTime: 0
   lockTimeNeeded: 1
-  missileDamage: 4
+  missileDamage: 5

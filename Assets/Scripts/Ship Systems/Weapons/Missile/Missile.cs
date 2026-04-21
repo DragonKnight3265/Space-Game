@@ -71,15 +71,14 @@ public class Missile : MonoBehaviour
     
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         if (collision.collider.name.Equals(_target.name))
         {
-            Debug.Log("Target hit!");
-            IDamageable damageable = gameObject.GetComponent<IDamageable>();
+            IDamageable damageable = _target.GetComponent<IDamageable>();
             if (damageable != null)
             {
                 damageable.TakeDamage(damage);
             }
+            Debug.Log(" Target took "+damage+" damage");
             Destroy(gameObject);
             
         }

@@ -6,13 +6,6 @@ public class Health : MonoBehaviour, IDamageable
     
     int _currentHealth;
     int _currentShield;
-    private SceneChanger sceneChanger;
-
-    void Start()
-    {
-        sceneChanger = FindObjectOfType<SceneChanger>();
-    }
-    
     private void Awake()
     {
         _currentHealth = stats.maxHealth;
@@ -39,14 +32,7 @@ public class Health : MonoBehaviour, IDamageable
         
         if (_currentHealth <= 0)
         {
-            if (CompareTag("Player") == true)
-            {
-                sceneChanger.defeated=true;
-            }
-            else
-            {
                 Destroy(gameObject);
-            }
         }
     }
 }
