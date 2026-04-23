@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5022b1262ec66004db041dc3f673f916, type: 3}
   m_Name: ShipStats
   m_EditorClassIdentifier: Assembly-CSharp::ShipStats
-  maxHealth: 4
-  maxShield: 4
+  maxHealth: 10
+  maxShield: 8
   maxSpeed: 15
   maxTurnSpeed: 7
   maxAcceleration: 10

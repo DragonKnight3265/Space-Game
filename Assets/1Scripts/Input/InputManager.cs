@@ -13,6 +13,8 @@ public class InputManager : MonoBehaviour
     public InputAction FireAction {get; private set;}
     public InputAction MissileFire {get; private set;}
     
+    public InputAction GetSupplies {get; private set;}
+    
     public bool FireDown {get; private set;}
     public bool MissileDown {get; private set;}
     public bool MissileLaunch {get; private set;}
@@ -33,6 +35,7 @@ public class InputManager : MonoBehaviour
         _controls.Enable();
         FireAction = _controls.Locomotion.Fire;
         MissileFire = _controls.Locomotion.Missile;
+        GetSupplies = _controls.Locomotion.Resupply;
     }
 
     void Start()

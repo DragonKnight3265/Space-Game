@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acd6aea9d70c3042b664e839ac6b893, type: 3}
   m_Name: MediumEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  maxHealth: 3
-  maxShield: 2
+  maxHealth: 5
+  maxShield: 3
   maxSpeed: 8
   maxTurnSpeed: 5
   maxAcceleration: 0

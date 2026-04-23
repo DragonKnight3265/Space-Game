@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using Random = UnityEngine.Random;
 public class MissileLocking : MonoBehaviour
 {
     
@@ -9,20 +9,23 @@ public class MissileLocking : MonoBehaviour
     [SerializeField] private ShipStats _stats;
     [SerializeField] private float lockRadius;
     [SerializeField] private Transform spawnLocation;
-    
     public LayerMask targetLayer;
     public GameObject missilePrefab;
     private Transform currentTarget;
     private bool _lockComplete;
     private int missileCounter;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private int maxMissiles;
+    
     void Start()
     {
         _input = InputManager.Instance;
         missileCounter=_stats.maxMissiles;
+        maxMissiles = _stats.maxMissiles;
+        
+        missileCounter = Random.Range(1, 3);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (_input.MissileDown && !_lockComplete)
@@ -95,6 +98,11 @@ public class MissileLocking : MonoBehaviour
         _stats.lockTime = 0;
         currentTarget = null;
         _lockComplete = false;
+    }
+
+    public void MissileReload()
+    {
+        missileCounter = Mathf.Min(missileCounter, maxMissiles);
     }
     
 }

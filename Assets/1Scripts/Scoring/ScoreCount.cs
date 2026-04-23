@@ -7,7 +7,7 @@ public class ScoreCount : MonoBehaviour
     [SerializeField] public TMP_Text levelText;
     public static ScoreCount Instance;
     private int score;
-
+    private int level;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -18,6 +18,7 @@ public class ScoreCount : MonoBehaviour
         {
             Instance  = this;
         }
+        level = 0 + LevelManager.instance.currentLevel;
     }
     
     void Start()
@@ -34,7 +35,8 @@ public void AddScore(int points)
 
     public void UpdateLevelText()
     {
-        levelText.text = "Level:" + LevelManager.instance.currentLevel;
+        
+        levelText.text = "Level:" + level;
     }
 
     void UpdateScoreText()

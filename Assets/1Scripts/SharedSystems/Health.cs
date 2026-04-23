@@ -1,15 +1,35 @@
-using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] CharacterStats stats;
     
     int _currentHealth;
     int _currentShield;
+    int _maxHealth;
+    int _maxShield;
+    private int healing;
+    private int energy;
+    
     private void Awake()
     {
         _currentHealth = stats.maxHealth;
         _currentShield = stats.maxShield;
+        _maxHealth = stats.maxHealth;
+        _maxShield = stats.maxShield;
+        
+        healing = Random.Range(2,4); 
+        energy = Random.Range(1,3);
+    }
+
+    public void Heal()
+    {
+        _currentHealth += healing;
+        _currentHealth = Mathf.Min(_currentHealth, _maxHealth);
+        Debug.Log("Healed "+healing);
+        _currentShield += energy;
+        _currentShield = Mathf.Min(_currentShield, _maxShield);
+        Debug.Log("Recharged "+energy);
     }
     
     public void TakeDamage(int damage)

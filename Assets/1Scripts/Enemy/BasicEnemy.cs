@@ -44,6 +44,7 @@ public class BasicEnemy : MonoBehaviour
     void Update()
     {
         Vector3 distanceTarget = _target.position - transform.position;
+        
         if (LevelManager.instance.movingLevels)
             return;
         

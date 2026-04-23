@@ -147,7 +147,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Resupply"",
+                    ""name"": ""GetSupplies"",
                     ""type"": ""Button"",
                     ""id"": ""29afaffd-aa82-4a9d-b481-98cc61ace782"",
                     ""expectedControlType"": """",
@@ -263,7 +263,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Resupply"",
+                    ""action"": ""GetSupplies"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -291,7 +291,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Locomotion_MissileLock = m_Locomotion.FindAction("MissileLock", throwIfNotFound: true);
         m_Locomotion_Missile = m_Locomotion.FindAction("Missile", throwIfNotFound: true);
         m_Locomotion_Abillity = m_Locomotion.FindAction("Abillity", throwIfNotFound: true);
-        m_Locomotion_Resupply = m_Locomotion.FindAction("Resupply", throwIfNotFound: true);
+        m_Locomotion_Resupply = m_Locomotion.FindAction("GetSupplies", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -415,7 +415,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Abillity => m_Wrapper.m_Locomotion_Abillity;
         /// <summary>
-        /// Provides access to the underlying input action "Locomotion/Resupply".
+        /// Provides access to the underlying input action "Locomotion/GetSupplies".
         /// </summary>
         public InputAction @Resupply => m_Wrapper.m_Locomotion_Resupply;
         /// <summary>
@@ -580,7 +580,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAbillity(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Resupply" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "GetSupplies" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
