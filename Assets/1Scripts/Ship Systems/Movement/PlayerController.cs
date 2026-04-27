@@ -1,37 +1,66 @@
-using Unity.Mathematics.Geometry;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using TMPro;
+
 
 public class Player : MonoBehaviour
 {
-    
-    [SerializeField] ShipStats _ship;
+    [SerializeField] ShipStats ship;
     private InputManager _input;
     private CharacterController _controller;
     private SceneChanger sceneChanger;
+    private MissileLocking _missile;
+    private Health _health;
+    
+    [SerializeField] public TMP_Text healthText;
+    
+    
+    
     
     void Start()
     {
         _input = InputManager.Instance;
         _controller = GetComponent<CharacterController>();
-        sceneChanger = FindObjectOfType<SceneChanger>();
+        sceneChanger = FindFirstObjectByType<SceneChanger>();
+        _health = GetComponent<Health>();
     }
+    
+    private void UpdateHealthText()
+    {
+        healthText.text = "Hull:"+_health._currentHealth + " " +
+                          "Shield:"+_health._currentShield;
+    }
+    
     void Update()
     {
         //Return to Normal after
         //if (LevelManager.instance.movingLevels)
             //return;
         HandleMovement(Time.deltaTime);
+        UpdateHealthText();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Resupply"))
+        {
+            Health health = transform.GetComponent<Health>();
+                        health.Heal();
+                        _missile = transform.GetComponent<MissileLocking>();
+                        _missile.MissileReload();
+                        Destroy(other.gameObject);
+        }
     }
     
     private void HandleMovement(float delta)
     {
         Vector3 moveDir = (_input.Move.x * transform.right) + (_input.Move.y * transform.forward);
-        _controller.Move(moveDir * (_ship.moveSpeed * Time.deltaTime));
+        _controller.Move(moveDir * (ship.moveSpeed * Time.deltaTime));
     }
 
     private void MovementShip(float delta)
     {
-        _ship.moveSpeed = Mathf.Clamp(_ship.moveSpeed, 0, 10);
+        ship.moveSpeed = Mathf.Clamp(ship.moveSpeed, 0, 10);
 
         // if current speed < max allowed speed
         if (_input.Move.x > 1)
@@ -39,9 +68,9 @@ public class Player : MonoBehaviour
             
         }
     }
+    
     private void OnDestroy()
     {
         sceneChanger.defeated = true;
     }
-    
 }

@@ -18,7 +18,6 @@ public class ScoreCount : MonoBehaviour
         {
             Instance  = this;
         }
-        level = 0 + LevelManager.instance.currentLevel;
     }
     
     void Start()
@@ -47,6 +46,7 @@ public void AddScore(int points)
     {
         UpdateScoreText();
         UpdateLevelText();
+        level = 0 + LevelManager.instance.currentLevel;
     }
     
     

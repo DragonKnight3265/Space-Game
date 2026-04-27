@@ -24,7 +24,6 @@ public class MissileLocking : MonoBehaviour
         
         missileCounter = Random.Range(1, 3);
     }
-
     
     void Update()
     {
@@ -86,7 +85,6 @@ public class MissileLocking : MonoBehaviour
         }
     }
     
-    
     void FireMissile()
         {
             GameObject missile = Instantiate(missilePrefab, spawnLocation.position, spawnLocation.rotation);
@@ -102,6 +100,7 @@ public class MissileLocking : MonoBehaviour
 
     public void MissileReload()
     {
+        missileCounter += Random.Range(1, 3);
         missileCounter = Mathf.Min(missileCounter, maxMissiles);
     }
     

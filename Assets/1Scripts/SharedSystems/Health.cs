@@ -4,8 +4,8 @@ public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] CharacterStats stats;
     
-    int _currentHealth;
-    int _currentShield;
+    public int _currentHealth;
+    public int _currentShield;
     int _maxHealth;
     int _maxShield;
     private int healing;
