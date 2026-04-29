@@ -17,13 +17,12 @@ public class Health : MonoBehaviour, IDamageable
         _currentShield = stats.maxShield;
         _maxHealth = stats.maxHealth;
         _maxShield = stats.maxShield;
-        
-        healing = Random.Range(2,4); 
-        energy = Random.Range(1,3);
     }
 
     public void Heal()
     {
+        healing = Random.Range(1,5); 
+        energy = Random.Range(0,4);
         _currentHealth += healing;
         _currentHealth = Mathf.Min(_currentHealth, _maxHealth);
         Debug.Log("Healed "+healing);

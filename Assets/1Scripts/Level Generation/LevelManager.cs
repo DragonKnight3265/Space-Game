@@ -11,8 +11,8 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public int currentLevel = 1;
     [SerializeField] public int enemiesPerLevel = 3;
-    [SerializeField] public float spawnRadius = 60f;
-    [SerializeField] public float minDistanceFromPlayer = 35f;
+    [SerializeField] public float spawnRadius;
+    [SerializeField] public float minDistanceFromPlayer;
     
     public GameObject player;
     [Header("Enemey types")]
@@ -20,13 +20,18 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public GameObject mediumEnemiesPrefab;
     [SerializeField] public GameObject hardEnemiesPrefab;
 
+    //Supply
+    [SerializeField] public GameObject supplyCratePrefab;
+    [SerializeField] public float supplyCrateChance;
+    
+    
     [Header("Enemy Scaling")] 
-    [SerializeField] public float strongEnemyChance = 0f;
-    [SerializeField] public float hardEnemyChance = 0f;
-    [SerializeField] public float chanceIncrease = .05f;
-    [SerializeField] public int levelsPerIncrease = 3;
-    [SerializeField] public float maxStrongEnemyChance = .75f;
-    [SerializeField] public float maxHardEnemyChance = .40f;
+    public float strongEnemyChance = 0f;
+    public float hardEnemyChance = 0f;
+    [SerializeField] public float chanceIncrease;
+    [SerializeField] public int levelsPerIncrease;
+    [SerializeField] public float maxStrongEnemyChance;
+    [SerializeField] public float maxHardEnemyChance;
     
     public int enemiesAlive = 0;
     
@@ -54,10 +59,22 @@ public class LevelManager : MonoBehaviour
         {
             SpawnEnemies();
         }
+        SpawnSupplyCrate();
         StartCoroutine(transition.FadeOut());
         
     }
 
+
+    void SpawnSupplyCrate()
+    {
+        Vector3 spawnPos = GetValidSpawnPostion();
+
+        if (Random.value < supplyCrateChance)
+        {
+            Instantiate(supplyCratePrefab, spawnPos, Quaternion.identity);
+        }
+    }
+    
     void SpawnEnemies()
     {
         Vector3 spawnPos = GetValidSpawnPostion();

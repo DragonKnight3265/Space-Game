@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
   maxHealth: 5
   maxShield: 3
-  maxSpeed: 8
-  maxTurnSpeed: 5
+  maxSpeed: 20
+  maxTurnSpeed: 10
   maxAcceleration: 0
   moveSpeed: 10
   turnSpeed: 5

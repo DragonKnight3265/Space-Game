@@ -1,17 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-
-
 public class Player : MonoBehaviour
 {
     [SerializeField] ShipStats ship;
+    
     private InputManager _input;
     private CharacterController _controller;
     private SceneChanger sceneChanger;
-    private MissileLocking _missile;
     private Health _health;
-    
+    private MissileLocking _missile;
     [SerializeField] public TMP_Text healthText;
     
     
@@ -23,19 +21,21 @@ public class Player : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         sceneChanger = FindFirstObjectByType<SceneChanger>();
         _health = GetComponent<Health>();
+        _missile=GetComponentInChildren<MissileLocking>();
     }
     
     private void UpdateHealthText()
     {
         healthText.text = "Hull:"+_health._currentHealth + " " +
-                          "Shield:"+_health._currentShield;
+                          "Shield:"+_health._currentShield+"" +
+                          "Missile Ammo:" + _missile.missileAmmo;
     }
     
     void Update()
     {
         //Return to Normal after
-        //if (LevelManager.instance.movingLevels)
-            //return;
+        if (LevelManager.instance.movingLevels)
+            return;
         HandleMovement(Time.deltaTime);
         UpdateHealthText();
     }
@@ -44,11 +44,11 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Resupply"))
         {
-            Health health = transform.GetComponent<Health>();
-                        health.Heal();
-                        _missile = transform.GetComponent<MissileLocking>();
-                        _missile.MissileReload();
-                        Destroy(other.gameObject);
+            Health health = GetComponent<Health>();
+            _health.Heal();
+            MissileLocking missile = GetComponentInChildren<MissileLocking>();
+            _missile.MissileReload();
+            Destroy(other.gameObject);
         }
     }
     

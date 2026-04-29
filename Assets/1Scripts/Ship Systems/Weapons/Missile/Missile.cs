@@ -62,8 +62,6 @@ public class Missile : MonoBehaviour
     }
 
     
-    
-
     public void SetTarget(Transform newtarget)
     {
         _target = newtarget;
@@ -78,9 +76,8 @@ public class Missile : MonoBehaviour
             {
                 damageable.TakeDamage(damage);
             }
-            Debug.Log(" Target took "+damage+" damage");
+            Debug.Log(_target +" took "+damage+" damage");
             Destroy(gameObject);
-            
         }
     }
 }

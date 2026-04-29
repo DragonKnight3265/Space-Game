@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShipStats
   maxHealth: 10
   maxShield: 8
-  maxSpeed: 15
-  maxTurnSpeed: 7
+  maxSpeed: 25
+  maxTurnSpeed: 10
   maxAcceleration: 10
   moveSpeed: 10
   turnSpeed: 10
@@ -23,10 +23,11 @@ MonoBehaviour:
   weaponDamage: 1
   weaponChargeNeeded: 1.2
   weaponCharge: 0
-  maxMissiles: 3
+  maxMissiles: 5
   missileRange: 80
   missileSpeed: 15
   missileTurnSpeed: 5
   lockTime: 0
   lockTimeNeeded: 1
-  missileDamage: 5
+  missileDamage: 6
+  missileAmmo: 5

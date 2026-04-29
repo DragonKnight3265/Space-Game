@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 public class MissileLocking : MonoBehaviour
 {
@@ -13,23 +12,23 @@ public class MissileLocking : MonoBehaviour
     public GameObject missilePrefab;
     private Transform currentTarget;
     private bool _lockComplete;
-    private int missileCounter;
+    public int missileAmmo;
     private int maxMissiles;
+    
     
     void Start()
     {
         _input = InputManager.Instance;
-        missileCounter=_stats.maxMissiles;
+        _stats.missileAmmo=_stats.maxMissiles;
         maxMissiles = _stats.maxMissiles;
-        
-        missileCounter = Random.Range(1, 3);
+        missileAmmo = _stats.missileAmmo;
     }
     
     void Update()
     {
         if (_input.MissileDown && !_lockComplete)
         {
-            if (missileCounter > 0)
+            if (missileAmmo > 0)
             {
                 AttemptLockTarget();
             }
@@ -40,13 +39,11 @@ public class MissileLocking : MonoBehaviour
             
         }
         
-        
-
-        if (_lockComplete && _input.MissileLaunch)
+        if (_lockComplete && _input.MissileLaunch && missileAmmo>=1)
         {
             FireMissile();
             ResetLock();
-            missileCounter-=1;
+            missileAmmo-=1;
         }
 
         if (!_input.MissileDown && !_lockComplete)
@@ -100,8 +97,10 @@ public class MissileLocking : MonoBehaviour
 
     public void MissileReload()
     {
-        missileCounter += Random.Range(1, 3);
-        missileCounter = Mathf.Min(missileCounter, maxMissiles);
+        
+        missileAmmo += Random.Range(1, 4);
+        missileAmmo = Mathf.Min(missileAmmo, maxMissiles);
+        Debug.Log("Missile Reload");
     }
     
 }
