@@ -48,10 +48,5 @@ public class Health : MonoBehaviour, IDamageable
             _currentHealth -= damage;
             Debug.Log(gameObject.name + "took " + damage + " hull damage");
         }
-        
-        if (_currentHealth <= 0)
-        {
-                Destroy(gameObject);
-        }
     }
 }

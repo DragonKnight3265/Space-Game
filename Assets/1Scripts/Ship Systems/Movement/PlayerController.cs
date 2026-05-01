@@ -38,6 +38,12 @@ public class Player : MonoBehaviour
             return;
         HandleMovement(Time.deltaTime);
         UpdateHealthText();
+        if (_health._currentHealth <= 0)
+        {
+            sceneChanger.defeated = true;
+            Destroy(gameObject);
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -67,10 +73,5 @@ public class Player : MonoBehaviour
         {
             
         }
-    }
-    
-    private void OnDestroy()
-    {
-        sceneChanger.defeated = true;
     }
 }

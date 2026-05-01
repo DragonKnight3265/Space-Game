@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BasicEnemy
   stats: {fileID: 11400000, guid: e659e673b2048dd4ba6f95e17027b123, type: 2}
   firePosition: {fileID: 8268889702407527223}
+  explosion: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}
 --- !u!114 &7849993886852508964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   stats: {fileID: 11400000, guid: e659e673b2048dd4ba6f95e17027b123, type: 2}
+  _currentHealth: 0
+  _currentShield: 0
 --- !u!135 &5844142055762677853
 SphereCollider:
   m_ObjectHideFlags: 0

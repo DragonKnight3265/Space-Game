@@ -4,6 +4,8 @@ public class BasicEnemy : MonoBehaviour
 {
     [SerializeField] private EnemyStats stats;
     [SerializeField] private Transform firePosition;
+    [SerializeField] private GameObject explosion;
+    
     private Transform _target;
     private Vector3 _movePoint;
     private bool _movePointSet;
@@ -11,7 +13,6 @@ public class BasicEnemy : MonoBehaviour
     private float _weaponCharge;
     private float _weaponChargeNeeded;
     private int damage;
-    
     
     private void Awake()
     {
@@ -64,6 +65,11 @@ public class BasicEnemy : MonoBehaviour
             //Attack
             Weapon();
         }
+
+        if (GetComponent<Health>()._currentHealth <= 0)
+        {
+            OnDie();
+        }
     }
 
     private void Searching()
@@ -107,7 +113,6 @@ public class BasicEnemy : MonoBehaviour
     
     private void SearchPoint()
     {
-        
         if (Random.value < stats.moveToPlayerBias)
         {
             Vector3 playerDirection = (_target.position - transform.position).normalized;
@@ -163,11 +168,16 @@ public class BasicEnemy : MonoBehaviour
              _weaponCharge = 0;
          }
     }
-    public void OnDestroy()
+    
+    public void OnDie()
     {
+        Instantiate(explosion, transform.position, transform.rotation);
         LevelManager.instance.EnemyKilled();
         if (ScoreCount.Instance != null) {
             ScoreCount.Instance.AddScore(stats.pointsAmount);
         }
+        Destroy(gameObject);
     }
+    
+    
 }

@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+
 using Random = UnityEngine.Random;
 public class MissileLocking : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class MissileLocking : MonoBehaviour
     [SerializeField] private ShipStats _stats;
     [SerializeField] private float lockRadius;
     [SerializeField] private Transform spawnLocation;
+    [SerializeField] private Image crossHairImage;
+    
     public LayerMask targetLayer;
     public GameObject missilePrefab;
     private Transform currentTarget;
@@ -45,7 +49,6 @@ public class MissileLocking : MonoBehaviour
             ResetLock();
             missileAmmo-=1;
         }
-
         if (!_input.MissileDown && !_lockComplete)
         {
             ResetLock();
@@ -78,6 +81,7 @@ public class MissileLocking : MonoBehaviour
                 _stats.lockTime = _stats.lockTimeNeeded;
                 _lockComplete = true;
                 Debug.Log("Lock Complete");
+                crossHairImage.color = Color.green;
             }
         }
     }
@@ -93,11 +97,11 @@ public class MissileLocking : MonoBehaviour
         _stats.lockTime = 0;
         currentTarget = null;
         _lockComplete = false;
+        crossHairImage.color = Color.white;
     }
 
     public void MissileReload()
     {
-        
         missileAmmo += Random.Range(1, 4);
         missileAmmo = Mathf.Min(missileAmmo, maxMissiles);
         Debug.Log("Missile Reload");

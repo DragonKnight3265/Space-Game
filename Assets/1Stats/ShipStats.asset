@@ -24,9 +24,9 @@ MonoBehaviour:
   weaponChargeNeeded: 1.2
   weaponCharge: 0
   maxMissiles: 5
-  missileRange: 80
-  missileSpeed: 15
-  missileTurnSpeed: 5
+  missileRange: 150
+  missileSpeed: 30
+  missileTurnSpeed: 10
   lockTime: 0
   lockTimeNeeded: 1
   missileDamage: 6

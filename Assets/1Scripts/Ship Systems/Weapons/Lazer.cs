@@ -6,6 +6,8 @@ public class Lazer : MonoBehaviour
     [SerializeField]private ShipStats stats;
     [SerializeField] private Camera shootPosition;
     [SerializeField] private Transform firePosition;
+    [SerializeField] private GameObject projectile;
+    
     
     private InputManager _input;
     private int damage;
@@ -44,7 +46,12 @@ public class Lazer : MonoBehaviour
                     damageable.TakeDamage(damage);
                 }
                 _weaponCharge = 0;
+                
+                GameObject laser = Instantiate(projectile, hit.point, Quaternion.LookRotation(hit.normal));
+                
             }
         
+            
+            
     }
 }
