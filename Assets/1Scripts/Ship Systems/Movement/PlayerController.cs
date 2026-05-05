@@ -34,8 +34,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         //Return to Normal after
-        if (LevelManager.instance.movingLevels)
-            return;
+        //if (LevelManager.instance.movingLevels)
+            //return;
         HandleMovement(Time.deltaTime);
         UpdateHealthText();
         if (_health._currentHealth <= 0)

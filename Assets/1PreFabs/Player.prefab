@@ -522,6 +522,10 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 19d3150356623ac45b74798883362abe, type: 2}
   shootPosition: {fileID: 7875371577080246935}
   firePosition: {fileID: 6463754762715823605}
+  projectile: {fileID: 3406042682931233778, guid: 392a51dff1ffc9b4286b8c28c70139ab, type: 3}
+  firePoints:
+  - {fileID: 7302717321613515644}
+  - {fileID: 2911162410839388313}
 --- !u!114 &4274847923479043529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,10 +541,12 @@ MonoBehaviour:
   _stats: {fileID: 11400000, guid: 19d3150356623ac45b74798883362abe, type: 2}
   lockRadius: 3
   spawnLocation: {fileID: 8659197639757714525}
+  crossHairImage: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 3
   missilePrefab: {fileID: 5253520370321628686, guid: 1a40be1f91c80f046aa1ce046c47b8e3, type: 3}
+  missileAmmo: 0
 --- !u!1001 &6953670283539396597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -652,7 +658,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16458f5f2fa45c438091d878c1c5821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  _ship: {fileID: 11400000, guid: 19d3150356623ac45b74798883362abe, type: 2}
+  ship: {fileID: 0}
+  healthText: {fileID: 0}
 --- !u!114 &8834031582619218102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +673,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   stats: {fileID: 11400000, guid: 19d3150356623ac45b74798883362abe, type: 2}
+  _currentHealth: 0
+  _currentShield: 0
 --- !u!135 &8667706198798520858
 SphereCollider:
   m_ObjectHideFlags: 0

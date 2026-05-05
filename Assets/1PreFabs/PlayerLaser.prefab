@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5939990167285195483}
   - component: {fileID: 6520219434123245676}
   m_Layer: 0
-  m_Name: Line
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,4 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050379ea7c4701746b73e95609a9d19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LaserEffect
-  line: {fileID: 6520219434123245676}
+  _target: {x: 0, y: 0, z: 0}
+  collisionExplosion: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}
+  speed: 50

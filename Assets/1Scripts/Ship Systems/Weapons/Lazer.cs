@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class Lazer : MonoBehaviour
@@ -7,11 +6,13 @@ public class Lazer : MonoBehaviour
     [SerializeField] private Camera shootPosition;
     [SerializeField] private Transform firePosition;
     [SerializeField] private GameObject projectile;
-    
+    [SerializeField] private Transform[] firePoints;
     
     private InputManager _input;
     private int damage;
 
+    private GameObject proj;
+    
     private float _weaponCharge;
     private float _weaponChargeNeeded;
     private void Awake()
@@ -40,6 +41,13 @@ public class Lazer : MonoBehaviour
         Vector3 dir = firePosition.TransformDirection(Vector3.forward);
             if (Physics.SphereCast(origin, .5f, dir, out hit, maxDistance))
             {
+                
+                foreach (Transform firePoint in firePoints)
+                {
+                    GameObject proj = Instantiate(projectile, firePoint.position, transform.rotation);
+                    proj.GetComponent<LaserEffect>().setTarget(hit.point);
+                }
+                
                 IDamageable damageable = hit.collider.GetComponent<IDamageable>();
                 if (damageable != null)
                 {
@@ -47,11 +55,8 @@ public class Lazer : MonoBehaviour
                 }
                 _weaponCharge = 0;
                 
-                GameObject laser = Instantiate(projectile, hit.point, Quaternion.LookRotation(hit.normal));
-                
+                Destroy(proj, 5f);
             }
         
-            
-            
     }
 }
